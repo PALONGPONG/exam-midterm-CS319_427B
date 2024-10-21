@@ -128,9 +128,8 @@ async function fetchTasks(): Promise<task[]> {
                 // reject("Error fetching tasks");
         });
 
-        // คืนค่า array ของ Task
         // console.log("tasks", tasks);
-        return tasks;
+        return await tasks;
 
     } catch (error) {
 
@@ -160,8 +159,8 @@ console.log("-------------------");
 function parseTaskData(jsonData: string): any {
     try {
    
-        const taskData = JSON.parse(jsonData);
-        return taskData;
+        const Data = JSON.parse(jsonData);
+        return Data;
     } catch (error) {
 
         return "Error: Invalid JSON data.";
@@ -169,15 +168,15 @@ function parseTaskData(jsonData: string): any {
 }
 
 // ตัวอย่างการใช้งาน
-const jsonString = `{
+const json = `{
     "title": "Task 1",
     "description": "This is task 1"
 }`;
 
-const invalidJsonString = `{
+const nojson = `{
     title: "Task 2",
     description: "This is task 2"
 }`;
 
-console.log(parseTaskData(jsonString)); 
-console.log(parseTaskData(invalidJsonString));
+console.log(parseTaskData(json)); 
+console.log(parseTaskData(nojson));
